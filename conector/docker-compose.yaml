@@ -1,0 +1,20 @@
+version: '3'
+
+networks:
+  default:
+    external: false
+  kabacorp:
+    external: true
+
+services:
+   conector:
+    build:
+      dockerfile: Dockerfile
+    restart: always
+    container_name: conector
+    networks:
+      kabacorp:
+        ipv4_address: 172.19.0.2
+    tty: true
+    ports:
+      - "1234:1234"
