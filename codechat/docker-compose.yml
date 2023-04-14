@@ -1,4 +1,4 @@
-ersion: '3'
+version: '3'
 
 networks:
   default:
@@ -12,13 +12,14 @@ services:
       dockerfile: Dockerfile
     restart: always
     container_name: codechat
-    networks:
+    networks: 
       kabacorp:
         ipv4_address: 172.19.0.4
-    tty: true
+    tty: true	
     env_file:
-      - ./.env
+      - ./env/.env
     volumes:
+      # sudo mkdir -p /data/mongodb
       - ./instances:/home/api/instances
     ports:
       - "8080:8080"
