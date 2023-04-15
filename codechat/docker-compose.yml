@@ -1,3 +1,8 @@
+version: '3'
+
+networks:
+  default:
+    external: false
   kabacorp:
     external: true
 
@@ -11,9 +16,8 @@ services:
         ipv4_address: 172.19.0.4
     tty: true
     env_file:
-      - .env
+      - ./src/.env
     volumes:
-      # sudo mkdir -p /data/mongodb
       - ./instances:/home/api/instances
     command: [node, './dist/src/main.js']
     ports:
