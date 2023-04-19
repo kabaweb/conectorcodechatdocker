@@ -1,0 +1,120 @@
+# ⚠️
+# ⚠️ ALL SETTINGS DEFINED IN THIS FILE ARE APPLIED TO ALL INSTANCES.
+# ⚠️
+
+# ⚠️ RENAME THIS FILE TO env.yml
+
+# Choose the server type for the application
+SERVER:
+  TYPE: http # https
+  PORT: 8080 # 443
+
+CORS:
+  ORIGIN:
+    - '*'
+    # - yourdomain.com
+  METHODS:
+    - POST
+    - GET
+    - PUT
+    - DELETE
+  CREDENTIALS: true
+
+# Install ssl certificate and replace string <domain> with domain name
+# Access: https://certbot.eff.org/instructions?ws=other&os=ubuntufocal
+SSL_CONF:
+  PRIVKEY: /etc/letsencrypt/live/<domain>/privkey.pem
+  FULLCHAIN: /etc/letsencrypt/live/<domain>/fullchain.pem
+
+# Determine the logs to be displayed
+LOG:
+  LEVEL:
+    - ERROR
+    - WARN
+    - DEBUG
+    - INFO
+    - LOG
+    - VERBOSE
+    - DARK
+  COLOR: true
+
+# Determine how long the instance should be deleted from memory in case of no connection.
+# Default time: 5 minutes
+# If you don't even want an expiration, enter the value false
+DEL_INSTANCE: 5 # or false
+
+# Temporary data storage
+STORE:
+  CLEANING_INTERVAL: 7200 # seconds === 2h
+  MESSAGE: true
+  CONTACTS: false
+  CHATS: false
+
+# Permanent data storage
+DATABASE:
+  ENABLED: false
+  CONNECTION:
+    URI: 'mongodb://<USER>:<PASSWORD>@<HOST>:<PORT>/?authSource=admin&readPreference=primary&ssl=false&directConnection=true'
+    DB_PREFIX_NAME: codechat
+  # Choose the data you want to save in the application's database or store
+  SAVE_DATA:
+    INSTANCE: false
+    OLD_MESSAGE: false
+    NEW_MESSAGE: true
+    MESSAGE_UPDATE: true
+    CONTACTS: true
+    CHATS: true
+
+REDIS:
+  ENABLED: false
+  URI: 'redis://<ROST>'
+
+# Webhook Settings
+WEBHOOK:
+  # Define a global webhook that will listen for enabled events from all instances
+  GLOBAL:
+    URL: <url>
+    ENABLED: false
+  # Automatically maps webhook paths
+  # Set the events you want to hear  
+  EVENTS:
+    QRCODE_UPDATED: true
+    MESSAGES_SET: true
+    MESSAGES_UPSERT: true
+    MESSAGES_UPDATE: true
+    SEND_MESSAGE: true
+    CONTACTS_SET: true
+    CONTACTS_UPSERT: true
+    CONTACTS_UPDATE: true
+    PRESENCE_UPDATE: true
+    CHATS_SET: true
+    CHATS_UPSERT: true
+    CHATS_UPDATE: true
+    CHATS_DELETE: true
+    GROUPS_UPSERT: true
+    GROUP_UPDATE: true
+    GROUP_PARTICIPANTS_UPDATE: true
+    CONNECTION_UPDATE: true
+    # This event fires every time a new token is requested via the refresh route
+    NEW_JWT_TOKEN: true
+
+CONFIG_SESSION_PHONE:
+  # Name that will be displayed on smartphone connection
+  CLIENT: CodeChat
+  NAME: Chrome # firefox | edge | opera | safari
+
+# Set qrcode display limit
+QRCODE:
+  LIMIT: 6
+
+# Defines an authentication type for the api
+AUTHENTICATION:
+  TYPE: jwt # or apikey
+  # Define a global apikey to access all instances
+  API_KEY:
+    # OBS: This key must be inserted in the request header to create an instance.
+    KEY: t8OOEeISKzpmc3jjcMqBWYSaJsafdefer
+  # Set the secret key to encrypt and decrypt your token and its expiration time.
+  JWT:
+    EXPIRIN_IN: 3600 # seconds - 3600s === 1h | zero (0) - never expires
+    SECRET: L=0YWt]b2w[WF>#>:&E`

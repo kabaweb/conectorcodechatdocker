@@ -8,9 +8,7 @@ networks:
 
 services:
   codechat:
-    build: 
-      dockerfile: Dockerfile
-#    image: codechat/api:latest
+    image: codechat/api:latest
     restart: always
     container_name: codechat
     networks:
