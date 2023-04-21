@@ -1,0 +1,26 @@
+version: '3'
+
+networks:
+  default:
+    external: false
+  kabacorp:
+    external: true
+
+services:
+  codechat:
+    build: 
+      dockerfile: Dockerfile
+#    image: codechat/api:latest
+    restart: always
+    container_name: codechat
+    networks:
+      kabacorp:
+        ipv4_address: 172.19.0.4
+    tty: true
+    env_file:
+      - ./src/.env
+    volumes:
+      - ./instances:/home/api/instances
+    command: [node, './dist/src/main.js']
+    ports:
+      - "8080:8083"
