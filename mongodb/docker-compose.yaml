@@ -8,7 +8,7 @@ networks:
 
 services:
   mongodb:
-    container_name: mongodb
+#    container_name: mongodb
     # This image already has a single replica set
     image: mongo
     restart: always
@@ -23,5 +23,5 @@ services:
       MONGO_INITDB_ROOT_PASSWORD: kabacorp
     networks:
       kabacorp:
-        ipv4_address: 172.19.0.5
+        ipv4_address: 172.19.0.101
     tty: true
