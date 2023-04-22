@@ -16,12 +16,12 @@ services:
       # sudo mkdir -p /data/mongodb
       - ./data/mongodb:/data/db
     ports:
-      - 27017:27017
+      - 27027:27017
     environment:
       MONGO_INITDB_ROOT_USERNAME: root
       # Set a password to access the bank
       MONGO_INITDB_ROOT_PASSWORD: kabacorp
     networks:
       kabacorp:
-        ipv4_address: 172.19.0.5
+        ipv4_address: 172.19.0.100
     tty: true

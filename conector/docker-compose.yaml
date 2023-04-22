@@ -14,7 +14,7 @@ services:
     container_name: conector
     networks:
       kabacorp:
-        ipv4_address: 172.19.0.2
+        ipv4_address: 172.19.0.103
     tty: true
     ports:
       - "1234:1234"
