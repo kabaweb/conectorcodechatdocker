@@ -1,0 +1,23 @@
+version: '3.8'
+
+networks:
+  default:
+    external: false
+  kabacorp:
+    external: true
+
+services:
+  mongo-express:
+    image: mongo-express
+#    container_name: mongo-express
+    networks:
+      kabacorp:
+        ipv4_address: 172.19.0.100
+    tty: true
+    ports:
+      - 8081:8081
+    environment:
+      ME_CONFIG_BASICAUTH_USERNAME: "edcarlos@kabaweb.in"
+      ME_CONFIG_BASICAUTH_PASSWORD: "Senha"
+      ME_CONFIG_MONGODB_PORT: "27017"
+      ME_CONFIG_MONGODB_URL: "mongodb://root:kabacorp@172.19.0.101:27017"
