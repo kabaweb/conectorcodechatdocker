@@ -8,8 +8,9 @@ networks:
 
 services:
    conector:
-    build:
-      dockerfile: Dockerfile
+    image: edkaba/conector-conector   
+#    build:
+#      dockerfile: Dockerfile
     restart: always
 #    container_name: conector
     networks:
